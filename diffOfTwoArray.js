@@ -1,22 +1,17 @@
 function diffArray(arr1, arr2) {
-    var newArr = [];
-    var startArray;
-    var secondArray;
-    if(arr1.length > arr2.length){ 
-      startArray = arr1.slice();
-      secondArray = arr2.slice();
-    }
-    else if(arr1.length > arr2.length){
-      startArray = arr2.slice();
-      secondArray = arr2.slice();
-    }
-    startArray.filter(function(element){
-      if(startArray[element]===secondArray[element]){
-        newArr.push(element)
-      };
-    });
-    return newArr;
-  }
+  var newArr = [];
+  // convert both arrays to Sets
+  let a = new Set([...arr1]);
+  let b = new Set([...arr2]);
+
+  //then find the set difference of arr1 and arr2
+  let difference1 = [...a].filter(x => !b.has(x));
   
-  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+  //then find the set difference of arr1 and arr2
+  let difference2 = [...b].filter(x => !a.has(x));
+  newArr = [...difference1,...difference2]
+  return newArr
   
+}
+
+console.log(diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]));

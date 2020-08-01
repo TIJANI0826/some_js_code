@@ -1,6 +1,5 @@
 // The global variable
-var globalTitle = "        Winter Is     Coming";
-
+var globalTitle = "This Is Spinal Tap"
 // Only change code below this line
 function urlSlug(title) {
     return title.trim().toLowerCase().split(/\s+/).join("-")
